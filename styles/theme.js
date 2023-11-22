@@ -1,0 +1,65 @@
+import { StyleSheet } from "react-native";
+
+export const theme = StyleSheet.create({
+  /* deprecated colors */
+  "Solid/white": "#FEFEFE",
+  "Solid/black": "#000000",
+  "Solid/error": "#F8113A",
+  "Solid/success": "#4558FF",
+  "Solid/gray": "#999999",
+  "Primary/Blue": "#043FAC",
+  "Primary/Yellow": "#FFD913",
+  "Action/100%": "#3869FF",
+  "Radio/hipster": "#F82B75",
+  "Radio/hustler": "#0F5FF3",
+  "Radio/hacker": "#8811FF",
+  "Placeholder/input": "#BDBDBD",
+  "Placeholder/textarea": "#CACACA",
+  "Notice/textarea": "#CACACA",
+
+  // primary
+  primary_100: "#5959FF",
+  primary_80: "#7B81FE",
+  primary_60: "#9CA1FE",
+  primary_40: "#BDC0FF",
+  primary_20: "#DEE0FF",
+  primary_10: "#F5F5FF",
+  primary_120: "#4848CF",
+  primary_140: "#32379E",
+  // secondary
+  secondary_140: "#5905FF",
+  secondary_120: "#6436EE",
+  secondary_100: "#7D67F2",
+  secondary_80: "#9785F4",
+  // gray
+  gray_10: "#04050D",
+  gray_20: "#393A42",
+  gray_30: "#5C5D66",
+  gray_40: "#8D8D97",
+  gray_50: "#AAAAB4",
+  gray_60: "#C5C5CF",
+  gray_70: "#E2E2EC",
+  gray_80: "#F4F4F9",
+  gray_90: "#FBFBFD",
+  gray_100: "#FEFEFE",
+  // etc
+  crimson: "#F1194F",
+  salamander: "#FF463A",
+  dark_purple: "#5022D2",
+  amber: "#FFBF00",
+
+  strawberry: "#E25465",
+  salmon: "#E16865",
+  vitamin: "#F28B24",
+  mango: "#F0B644",
+  hazeled: "#2EAE78",
+  forest: "#3F9888",
+  jellyBean: "#297B9A",
+  bluesMu: "#5590D9",
+  royalBlue: "#5266D0",
+  grape: "#7353CE",
+  orchid: "#A755BE",
+  watermelon: "#ED5F7E",
+
+  dim: "rgba(4, 5, 13, 0.4)",
+});

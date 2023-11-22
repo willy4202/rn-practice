@@ -1,7 +1,15 @@
 import React, { useState } from "react";
-import { Button, StyleSheet, TextInput, View } from "react-native";
+import {
+  Button,
+  Image,
+  Modal,
+  StyleSheet,
+  TextInput,
+  View,
+} from "react-native";
+import { theme } from "../../styles/theme";
 
-const GoalInput = ({ onAddGoal }) => {
+const GoalInput = ({ onAddGoal, visable, closeModal }) => {
   const [enteredGoal, setenteredGoal] = useState();
 
   const goalInputHanlder = (enteredText) => {
@@ -13,16 +21,30 @@ const GoalInput = ({ onAddGoal }) => {
     setenteredGoal("");
   };
 
+  console.log(theme);
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.textInput}
-        placeholder="목표를 적으세요"
-        onChangeText={goalInputHanlder}
-        value={enteredGoal}
-      />
-      <Button title="목표 추가" onPress={addGoalHanlder} />
-    </View>
+    <Modal visible={visable} animationType="slide">
+      <View style={styles.inputContainer}>
+        <Image
+          style={styles.image}
+          source={require("../../assets/images/goal.png")}
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="목표를 적으세요"
+          onChangeText={goalInputHanlder}
+          value={enteredGoal}
+        />
+        <View style={styles.buttonContainer}>
+          <View style={styles.button}>
+            <Button title="Add Goal" onPress={addGoalHanlder} />
+          </View>
+          <View style={styles.button}>
+            <Button title="Cancel" onPress={closeModal} />
+          </View>
+        </View>
+      </View>
+    </Modal>
   );
 };
 
@@ -31,18 +53,34 @@ export default GoalInput;
 const styles = StyleSheet.create({
   inputContainer: {
     flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "center",
     alignItems: "center",
     marginBottom: 24,
-    borderBottomColor: "#cccccc",
-    borderBottomWidth: 1,
+    padding: 16,
+    backgroundColor: theme.primary_140,
   },
+
+  image: {
+    width: 100,
+    height: 100,
+    margin: 20,
+  },
+
   textInput: {
-    borderColor: "#cccccc",
+    borderColor: theme.gray_100,
     borderWidth: 1,
-    width: "70%",
+    width: "100%",
     padding: 8,
-    marginRight: 8,
+    marginBottom: 8,
+    color: theme["Solid/white"],
+  },
+
+  buttonContainer: {
+    flexDirection: "row",
+    marginTop: 16,
+  },
+  button: {
+    width: 100,
+    marginHorizontal: 8,
   },
 });
