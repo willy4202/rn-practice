@@ -21,7 +21,6 @@ const GoalInput = ({ onAddGoal, visable, closeModal }) => {
     setenteredGoal("");
   };
 
-  console.log(theme);
   return (
     <Modal visible={visable} animationType="slide">
       <View style={styles.inputContainer}>
@@ -31,16 +30,24 @@ const GoalInput = ({ onAddGoal, visable, closeModal }) => {
         />
         <TextInput
           style={styles.textInput}
-          placeholder="목표를 적으세요"
+          placeholder="write your Goal"
           onChangeText={goalInputHanlder}
           value={enteredGoal}
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title="Add Goal" onPress={addGoalHanlder} />
+            <Button
+              title="Cancel"
+              onPress={closeModal}
+              color={theme.salamander}
+            />
           </View>
           <View style={styles.button}>
-            <Button title="Cancel" onPress={closeModal} />
+            <Button
+              title="Add Goal"
+              onPress={addGoalHanlder}
+              color={theme.secondary_100}
+            />
           </View>
         </View>
       </View>
@@ -57,7 +64,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginBottom: 24,
     padding: 16,
-    backgroundColor: theme.primary_140,
+    backgroundColor: theme.primary_120,
   },
 
   image: {
@@ -67,12 +74,15 @@ const styles = StyleSheet.create({
   },
 
   textInput: {
-    borderColor: theme.gray_100,
+    borderColor: theme.gray_80,
     borderWidth: 1,
     width: "100%",
-    padding: 8,
+    padding: 12,
     marginBottom: 8,
-    color: theme["Solid/white"],
+    borderColor: theme.primary_10,
+    backgroundColor: theme.primary_10,
+    borderRadius: 8,
+    color: theme.gray_10,
   },
 
   buttonContainer: {
