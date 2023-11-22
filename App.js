@@ -1,33 +1,29 @@
 import { useState } from "react";
-import { Button, FlatList, ScrollView, TextInput } from "react-native";
-import { StyleSheet, Text, View } from "react-native";
+import { Alert, FlatList } from "react-native";
+import { StyleSheet, View } from "react-native";
+import GoalItem from "./components/Goal/GoalItem";
+import GoalInput from "./components/Goal/GoalInput";
 
 export default function App() {
-  const [enteredGoal, setenteredGoal] = useState();
   const [goals, setGoals] = useState([]);
 
-  const goalInputHanlder = (enteredText) => {
-    setenteredGoal(enteredText);
-  };
-  const addGoalHanlder = () => {
+  const addGoalHanlder = (enteredGoal) => {
     setGoals((prev) => [
       ...prev,
       { text: enteredGoal, id: Math.random().toString() },
     ]);
-    setenteredGoal("");
+  };
+
+  const deleteGoalHanlder = (id) => {
+    Alert.alert(id);
+    setGoals((prev) => {
+      return prev.filter((goal) => goal.id !== id);
+    });
   };
 
   return (
     <View style={styles.appContainer}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="목표를 적으세요"
-          onChangeText={goalInputHanlder}
-          value={enteredGoal}
-        />
-        <Button title="목표 추가" onPress={addGoalHanlder} />
-      </View>
+      <GoalInput onAddGoal={addGoalHanlder} />
       <View style={styles.goalsContainer}>
         {/* Rn에선 스타일 상속이 이뤄지지 않음, View와 Text가 별개기 때문에 
         View에 color를 적용해도 하위 Text엔 적용되지 않음 */}
@@ -35,9 +31,7 @@ export default function App() {
         <FlatList
           data={goals}
           renderItem={({ item }) => (
-            <View style={styles.goalItem}>
-              <Text style={styles.goalText}>{item.text}</Text>
-            </View>
+            <GoalItem onDeleteGoal={deleteGoalHanlder} item={item} />
           )}
           keyExtractor={(item) => {
             return item.id;
@@ -72,14 +66,5 @@ const styles = StyleSheet.create({
   },
   goalsContainer: {
     flex: 5,
-  },
-  goalItem: {
-    margin: 8,
-    padding: 8,
-    borderRadius: 8,
-    backgroundColor: "#5e0acc",
-  },
-  goalText: {
-    color: "white",
   },
 });
